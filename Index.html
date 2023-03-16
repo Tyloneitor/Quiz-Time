@@ -1,28 +1,22 @@
 <!Doctype html>
 <html lang="en-US">
 <head>
-    <meta charset="UTF-8">
-    <title> Quiz Time </title>
-    <link rel="stylesheet" href="/Assets/Visual.css">
-
+<meta charset="UTF-8">
+<title> Quiz Time </title>
+<link rel="stylesheet" href="./Assets/Visual.css"></link>
 </head>
-<body> 
+
+
+<body>
     <header>
-    <h1 class="Title">"Timed Trivia"</h1>
-    <form class="T-Box">
-        <input type="hidden" name="timer" value="0">
-        <div class="Question">
-            <h2>Trivia Question</h2>
-        <div class="Answer">
-            <label for="A1"><input type="radio" name="T1" id="A1"> Answer for question </label><br>
-            <label for="A1"><input type="radio" name="T1" id="A2"> Answer for question </label><br>
-            <label for="A1"><input type="radio" name="T1" id="A3"> Answer for question </label><br>
-            <label for="A1"><input type="radio" name="T1" id="A4"> Answer for question </label><br>
-            <button type="Submit" id="Enter"> <h4>Submit/Next</h4></button>
-        </div>
-        </div>
+     <h1 class="Title">"Timed Trivia Challenge"</h1>
+    </header>
+    <button id="startBtn">Start Quiz</button>
+    <div class= "box" >
+        <form id= "Triviabox">
+        <h2 id=TriviaQuestion></h2>
+        <div id= "questionline"></div>
+        <button Type="button" id="sub/next"><h3>Submit/Next</h3></button>
     </form>
-    <div class="score-box">
-        <h2>Score: <span id="score">0</span></h2>
-        <h2>Time Spent: <span id="Time"></span></h2>
-    </div`
+    </div>
+</body>

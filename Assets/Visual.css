@@ -1,1 +1,22 @@
-.
+.title{
+    color: Gray;
+    Background-color: white;
+    padding: 5px;
+    box-shadow: 5px gray;
+    Border: 15px Black;
+}
+.box{
+    width: 250px;
+    height: 125px;
+    Border: 15px Black;
+    margin: 10px gray;
+    box-shadow: 5px gray;
+}
+#questionline{
+    color: Gray;
+    Background-color: white;
+    padding: 10px;
+    box-shadow: 5px gray;
+    Border: 15px Black;
+    
+}
