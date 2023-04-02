@@ -97,13 +97,6 @@ function pickedAns() {
     } else {
       alert(`Incorrect. The correct answer is ${Questionlist[Questionnum].answer}.`);
     }
-    Questionnum++;
-    if (Questionnum < Questionlist.length) {
-      Trivia();
-    } else {
-      clearInterval(Timer2);
-      Triviabox.submit();
-    }
   }
   
   Trivia();
