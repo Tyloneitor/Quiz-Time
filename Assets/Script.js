@@ -50,56 +50,88 @@ const Questionlist = [
     answer: "Orange"
     },
     ];
-    
-    function Triviastart() {
-    const Triviabox = document.getElementById('Triviabox');
-    const TriviaQuestion = document.getElementById('TriviaQuestion');
-    const questionline = document.getElementById('questionline');
-    const startbtn = document.getElementById('startbtn')
-    const submitbtn = document.getElementById('sub/next');
-    const Timer1 = document.getElementById('timer')
-    const Timer2 = setInterval(() => {
-        TimeLeft--;
-        Timer1.textContent = TimeLeft;
-     if (TimeLeft === 30) {
-        clearInterval(Timer2);
-        Triviabox.submit();
-     }
-  }, 500);
-    startbtn.style.display = 'none';
-    Triviabox.style.display = 'block'
-    
-    const showq = Questionlist[Questionnum];
-        TriviaQuestion.textContent = showq.question;
-        questionline.innerHTML = '';
-    for (let choice of showq.Options) {
+     Questionnum = 0;
+
+     function Triviastart() {
+       const Triviabox = document.getElementById('Triviabox');
+       const TriviaQuestion = document.getElementById('TriviaQuestion');
+       const Optionline = document.getElementById('Optionline');
+       const startBtn = document.getElementById('startBtn');
+       const submitBtn = document.getElementById('submitBtn');
+       const Timer1= document.getElementById('timer');
+      
+      startBtn.style.display = 'none';
+      Triviabox.style.display = 'block';
+      
+      const showq = Questionlist[Questionnum];
+      TriviaQuestion.textContent = showq.question;
+      Optionline.innerHTML = '';
+      for (let Options of showq.Options) {
         const input = document.createElement('input')
         input.type = 'radio';
         input.name = 'answer';
         input.value = Options;
-    const label = document.createElement('label');
-    label.textContent = options;
-    questionline.appendChild(input);
-    questionline.appendChild(label);
-    questionline.appendChild(document.createElement('br'));
-  }
-}
-
-function pickedAns() {
-    const selectedAnswer = document.querySelector('input[name="answer"]:checked');
-    if (!selectedAnswer) {
-      alert('Please select an answer.');
-      return;
+        
+        const label = document.createElement('label');
+        label.textContent = Options;
+        Optionline.appendChild(input);
+        Optionline.appendChild(label);
+        Optionline.appendChild(document.createElement('br'));
+      }
+      startTimer();
+      // submitBtn.addEventListener('click', pickedAns);
     }
-    const isCorrect = selectedAnswer.value === Questionlist[Questionnum].answer;
-    if (isCorrect) {
-      alert('Correct!');
-    } else {
-      alert(`Incorrect. The correct answer is ${Questionlist[Questionnum].answer}.`);
+      
+      
+    function startTimer() {
+      let TimeLeft = 12;
+      const Timer1 = document.getElementById('timer');
+      Timer1.textContent = TimeLeft;
+      Timer2 = setInterval(() => {
+        TimeLeft--;
+        Timer1.textContent = TimeLeft;
+        if (TimeLeft === 0 || Questionnum === Questionlist.length) {
+          clearInterval(Timer2);
+          Triviabox.submit();
+        }
+      }, 1000);
     }
-  }
-  
-  Trivia();
-  
-  submitBtn.addEventListener('click', Triviastart);
-  startbtn.addEventListener('click', Triviastart);
+    
+     const submitBtn = document.getElementById('submitBtn');
+      submitBtn.addEventListener('click',() => {
+        const selectedAnswer = document.querySelector('input[name="answer"]:checked');
+        if (selectedAnswer !== null) {
+          // THIS EVEN LISTENER JUMPS NEXT QUESTION
+          Questionnum++;
+          if (Questionnum < Questionlist.length){
+            Triviastart();
+          } else {}
+        }
+      
+      function pickedAns() {
+        const selectedAnswer = document.querySelector('input[name="answer"]:checked');
+        if (!selectedAnswer) {
+          alert('Please select an answer.');
+          return;
+        }
+        const isCorrect = selectedAnswer.value === Questionlist[Questionnum].answer;
+        if (isCorrect) {
+          alert('Correct!');
+        } else {
+          alert(`Incorrect. The correct answer is ${Questionlist[Questionnum].answer}.`);
+        }
+        Questionnum++;
+        if (Questionnum  < Questionlist.length) {
+          Triviastart();
+        } else {
+          clearInterval(Timer2);
+          Triviabox.submit();
+        }
+      }
+      
+      Triviastart();
+      
+     const startBtn = document.getElementById('startBtn');
+     startBtn.addEventListener('click', Triviastart);
+      
+      });

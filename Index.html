@@ -7,16 +7,21 @@
 </head>
 
 
-<body>
-    <header>
+<body class="Body">
+    <div id="begin">
      <h1 class="Title">"Timed Trivia Challenge"</h1>
-    </header>
-    <button id="startBtn">Start Quiz</button>
-    <div class= "box" >
-        <form id= "Triviabox">
-        <h2 id=TriviaQuestion></h2>
-        <div id= "questionline"></div>
-        <button Type="button" id="sub/next"><h3>Submit/Next</h3></button>
-    </form>
+     <button id="startBtn">Start Quiz</button> 
     </div>
+     <div class= "box" style="display: none;" >
+        <form id= "Triviabox">
+            <h2 id=TriviaQuestion></h2>
+            <div id= "Optionline"></div>
+            <button type="button" id="submitBtn"><h3>Submit/Next</h3></button>
+        </form>
+     </div>
+    <h3>Time-Left:</h3>
+    <h3><div id = 'timer' ></div></h3>
+    <script src="./Assets/Script.js"></script>
 </body>
+
+<!--  <p>Time left: <span id="timer"></span></p> -->
